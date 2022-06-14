@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+		<link rel="stylesheet" href="/mdbootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/mdbootstrap/css/mdb.min.css" />
+		<link rel="stylesheet" href="/mdbootstrap/css/style.css" />
+
+		<style type="text/css">
+			body,
+			html {
+				height: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- Start your project here-->
+		<div class="container h-100">
+			<div class="row h-100 justify-content-center align-items-center">
+				<div class="col-sm-12 my-auto">
+					<!--Form without header-->
+					<div class="card card-block w-30 mx-auto" style="width: 30rem; margin: 0 auto; float: none; margin-bottom: 10px;">
+						<div class="card-body mx-4">
+							<!--Header-->
+							<div class="text-center">
+								<h3 class="dark-grey-text mb-5"><strong>Sign up</strong></h3>
+							</div>
+
+							<!--Body-->
+							<form action="/signup" method="post">
+
+								<div class="md-form">
+									<input type="text" id="Form-email1" name="email" class="form-control" />
+									<label for="Form-email1">Your email</label>
+								</div>
+
+								<div class="md-form">
+									<input type="password" id="Form-pass1" name="password" class="form-control" />
+									<label for="Form-pass1">Your password</label>
+								</div>
+								<!-- <p class="font-small blue-text d-flex justify-content-end">Forgot <a href="#" class="blue-text ml-1"> Password?</a></p> -->
+								<div class="md-form  pb-3">
+									<input type="text" id="Form-username1" name="username" class="form-control" />
+									<label for="Form-username1">Your name</label>
+                </div>
+
+								<div class="text-center mb-3">
+									<button type="submit" id="signup" class="btn blue-gradient btn-block btn-rounded z-depth-1a">Sign up</button>
+								</div>
+							</form>
+
+							<!-- <p class="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2">or Sign in with:</p> -->
+							<!-- <div class="row my-3 d-flex justify-content-center"> -->
+								<!--Facebook-->
+								<!-- <button type="button" class="btn btn-white btn-rounded mr-md-3 z-depth-1a"><i class="fab fa-facebook-f blue-text text-center"></i></button> -->
+								<!--Twitter-->
+								<!-- <button type="button" class="btn btn-white btn-rounded mr-md-3 z-depth-1a"><i class="fab fa-twitter blue-text"></i></button> -->
+								<!--Google +-->
+								<!-- <button type="button" class="btn btn-white btn-rounded z-depth-1a"><i class="fab fa-google-plus-g blue-text"></i></button> -->
+							<!-- </div> -->
+						</div>
+
+						<!--Footer-->
+						<div class="modal-footer mx-5 pt-3 mb-1">
+							<p class="font-small grey-text d-flex justify-content-end">member? <a href="/local/auth" class="blue-text ml-1"> Login</a></p>
+						</div>
+					</div>
+					<!--/Form without header-->
+				</div>
+			</div>
+		</div>
+
+		<!-- /Start your project here-->
+
+		<script type="text/javascript" src="/mdbootstrap/js/jquery.min.js"></script>
+		<script type="text/javascript" src="/mdbootstrap/js/popper.min.js"></script>
+		<script type="text/javascript" src="/mdbootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/mdbootstrap/js/mdb.min.js"></script>
+
+		<script>
+			$(document).ready(function(){
+				$('#signup').click(function(){
+					console.log("signup.ejs: signup button is clicked")
+				})
+			})
+		</script>
+	</body>
+</html>

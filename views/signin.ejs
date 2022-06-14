@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+		<link rel="stylesheet" href="/mdbootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/mdbootstrap/css/mdb.min.css" />
+		<link rel="stylesheet" href="/mdbootstrap/css/style.css" />
+		<style type="text/css">
+			body,
+			html {
+				height: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- Start your project here-->
+		<div class="container h-100">
+			<div class="row h-100 justify-content-center align-items-center">
+				<div class="col-sm-12 my-auto">
+					<!--Form without header-->
+					<div class="card card-block w-30 mx-auto" style="width: 30rem; margin: 0 auto; float: none; margin-bottom: 10px;">
+						<div class="card-body mx-4">
+							<!--Header-->
+							<div class="text-center">
+								<h3 class="dark-grey-text mb-5"><strong>Korea Medical Center</strong></h3>
+								<h3 class="dark-grey-text mb-5"><strong>Sign in</strong></h3>
+							</div>
+
+
+								<div class="md-form">
+									<% if(email.length >0 ) { %>
+										<input type="text" id="email" name="email" class="form-control" value=<%=email%> />
+									<% } else { %>
+										<input type="text" id="email" name="email" class="form-control" />
+									<% } %>
+									<label for="email">Your email </label>
+								</div>
+
+								<div class="md-form pb-3">
+									<% if(password) { %>
+										<input type="password" id="password" name="password" class="form-control" value=<%=password%> />
+									<% } else { %>
+										<input type="password" id="password" name="password" class="form-control" />
+									<% } %>
+									<label for="password">Your password</label>
+									<!-- <p class="font-small blue-text d-flex justify-content-end">Forgot <a href="#" class="blue-text ml-1"> Password?</a></p> -->
+                </div>
+
+                <div class="md-form">
+									<input type="hidden" id="client_id" name="client_id" class="form-control" value=<%=client_id%> />
+								</div>
+
+								<div class="md-form">
+									<input type="hidden" id="response_type" name="response_type" class="form-control" value=<%=response_type%> />
+								</div>
+
+								<div class="md-form">
+									<input type="hidden" id="redirect_uri" name="redirect_uri" class="form-control" value=<%=redirect_uri%> />
+                </div>
+
+
+								<div class="text-center mb-3">
+									<button type="submit" id="login" class="btn blue-gradient btn-block btn-rounded z-depth-1a">Sign in</button>
+								</div>
+							<!-- </form> -->
+
+							<p class="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2">or Sign in with:</p>
+							<div class="row my-3 d-flex justify-content-center">
+								<!--Facebook-->
+								<button type="button" class="btn btn-white btn-rounded mr-md-3 z-depth-1a"><i class="fab fa-facebook-f blue-text text-center"></i></button>
+								<!--Twitter-->
+								<button type="button" class="btn btn-white btn-rounded mr-md-3 z-depth-1a"><i class="fab fa-twitter blue-text"></i></button>
+								<!--Google +-->
+								<button type="button" class="btn btn-white btn-rounded z-depth-1a"><i class="fab fa-google-plus-g blue-text"></i></button>
+							</div>
+						</div>
+
+						<!--Footer-->
+						<div class="modal-footer mx-5 pt-3 mb-1">
+							<p class="font-small grey-text d-flex justify-content-end">Not a member? <a href="/signup" class="blue-text ml-1"> Sign Up</a></p>
+						</div>
+					</div>
+					<!--/Form without header-->
+				</div>
+			</div>
+		</div>
+
+		<!-- /Start your project here-->
+
+		<script type="text/javascript" src="/mdbootstrap/js/jquery.min.js"></script>
+		<script type="text/javascript" src="/mdbootstrap/js/popper.min.js"></script>
+		<script type="text/javascript" src="/mdbootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/mdbootstrap/js/mdb.min.js"></script>
+
+		<script>
+			$(document).ready(function(){
+				$('#login').click(function(){
+          console.log('signin.ejs: login button click')
+					var email = $('#email').val();
+					var password = $('#password').val();
+					var client_id = $('#client_id').val();
+					var response_type = $('#response_type').val();
+          var redirect_uri = $('#redirect_uri').val();
+          withCredentials = true;
+
+          var userInfo = btoa(email+':'+password)
+          console.log(userInfo)
+
+          var settings = {
+            "url": `/oauth2/authorize?client_id=${client_id}&response_type=${response_type}&redirect_uri=${redirect_uri}`,
+            "method": "GET",
+            "timeout": 0,
+            "headers": {
+              "Authorization": "Basic " + userInfo,
+            },
+          };
+
+
+          $.ajax(settings).done(function (response) {
+            console.log(1);
+            document.write(response)
+          });
+
+
+
+
+				})
+			})
+		</script>
+	</body>
+</html>
